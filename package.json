@@ -1,0 +1,26 @@
+{
+  "name": "harmony---backend",
+  "version": "1.0.0",
+  "description": "Till we figure out gitlab",
+  "homepage": "https://github.com/ciaranhayes/Harmony---Backend#readme",
+  "bugs": {
+    "url": "https://github.com/ciaranhayes/Harmony---Backend/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ciaranhayes/Harmony---Backend.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  }
+}
