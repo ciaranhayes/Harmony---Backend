@@ -1,10 +1,10 @@
-import express, { NextFunction, Request, Response } from 'express'
-import dotenv from 'dotenv'
-import mongoose from 'mongoose'
-import connectDB from './database/db'
-import jwt from 'jsonwebtoken'
-import User from './models/userModel'
+import express, { NextFunction, Request, Response } from 'express';
+import dotenv from 'dotenv';
+import connectDB from './database/db';
+import jwt from 'jsonwebtoken';
+import User from './models/userModel';
 import { expressjwt } from 'express-jwt';
+import bodyParser from 'body-parser';
 
 dotenv.config();
 connectDB();
@@ -55,7 +55,6 @@ if (existingUser) {
     return res.status(409).json({ message: 'Username already taken' })
 }
 
-
 const newUser = new User({
     username,
     firstName,
@@ -71,25 +70,25 @@ return res.status(201).json({ message: 'User registered successfully' })
 } catch (err) {
 return res.status(500).json({ message: 'Server error' })
 }
-})
-
-app.post('/login', (req: Request, res: Response) => {
-const { username, password } = req.body;
-
-// In a real-world app, you'd validate the user against your database
-if (username === 'user' && password === 'password') {
-    // Generate a JWT token
-    const token = jwt.sign({ username }, secret, { expiresIn: '1h' });
-    return res.json({ token });
-}
-
-return res.status(401).json({ message: 'Invalid credentials' });
 });
 
-// Protected route, accessible only with a valid JWT (Bearer token)
-app.get('/protected', jwtMiddleware, (req, res) => {
-res.send('This is a protected route. You are authenticated with a Bearer token!');
-});
+// app.post('/login', (req: Request, res: Response) => {
+// const { username, password } = req.body;
+
+// // In a real-world app, you'd validate the user against your database
+// if (username === 'user' && password === 'password') {
+//     // Generate a JWT token
+//     const token = jwt.sign({ username }, secret, { expiresIn: '1h' });
+//     return res.json({ token });
+// }
+
+// return res.status(401).json({ message: 'Invalid credentials' });
+// });
+
+// // Protected route, accessible only with a valid JWT (Bearer token)
+// app.get('/protected', jwtMiddleware, (req, res) => {
+// res.send('This is a protected route. You are authenticated with a Bearer token!');
+// });
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
