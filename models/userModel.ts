@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema ({
 const loginSchema = new mongoose.Schema({
     username: { type: String, required: true, unique: true },
     passwordHash: { type: String, required: true }
-});
+}, { collection: 'Harmony'});
 
 const User = mongoose.model("User", userSchema);
 const Login = mongoose.model('Login',loginSchema);
