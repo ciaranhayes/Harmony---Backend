@@ -8,6 +8,7 @@ async function registerUser(req: Request, res: Response): Promise<any> {
         const firstName = req.body.firstName;
         const lastName = req.body.lastName;
         const email = req.body.email;
+        const password = req.body.password;
         const age = parseInt(req.body.age, 10);
         const genre = req.body.genre;
 
@@ -19,6 +20,7 @@ async function registerUser(req: Request, res: Response): Promise<any> {
             username: username,
             firstName: firstName,
             lastName: lastName,
+            password: password,
             email: email,
             age: age,
             genre: genre

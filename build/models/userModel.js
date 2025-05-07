@@ -10,13 +10,14 @@ const userSchema = new mongoose_1.default.Schema({
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
     email: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
     age: { type: Number, required: true },
     genre: { type: [String], required: true }
 }, { collection: 'Harmony' });
 const loginSchema = new mongoose_1.default.Schema({
     username: { type: String, required: true, unique: true },
     passwordHash: { type: String, required: true }
-});
+}, { collection: 'Harmony' });
 const User = mongoose_1.default.model("User", userSchema);
 exports.User = User;
 const Login = mongoose_1.default.model('Login', loginSchema);

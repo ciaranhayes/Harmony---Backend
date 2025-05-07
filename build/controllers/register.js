@@ -18,6 +18,7 @@ function registerUser(req, res) {
             const firstName = req.body.firstName;
             const lastName = req.body.lastName;
             const email = req.body.email;
+            const password = req.body.password;
             const age = parseInt(req.body.age, 10);
             const genre = req.body.genre;
             if (!username || !firstName || !lastName || !email) {
@@ -27,6 +28,7 @@ function registerUser(req, res) {
                 username: username,
                 firstName: firstName,
                 lastName: lastName,
+                password: password,
                 email: email,
                 age: age,
                 genre: genre
