@@ -19,6 +19,7 @@ const userModel_1 = require("./models/userModel");
 const express_jwt_1 = require("express-jwt");
 const body_parser_1 = __importDefault(require("body-parser"));
 const register_1 = require("./controllers/register");
+const login_1 = require("./controllers/login");
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const port = 3000;
@@ -41,6 +42,7 @@ app.get('/user/:_id', (req, res, next) => __awaiter(void 0, void 0, void 0, func
     res.send('Welcome');
 });
 app.post('/register', register_1.registerUser);
+app.post('/login', login_1.loginUser);
 (0, db_1.default)().then(() => {
     app.listen(port, () => {
         console.log(`✅ Connected to MongoDB`);

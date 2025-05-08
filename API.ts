@@ -6,6 +6,7 @@ import { User } from './models/userModel';
 import { expressjwt } from 'express-jwt';
 import bodyParser from 'body-parser';
 import { registerUser } from './controllers/register';
+import { loginUser } from './controllers/login';
 
 dotenv.config();
 
@@ -35,6 +36,8 @@ app.get('/user/:_id', async (req, res, next) => {
 })
 
 app.post('/register', registerUser);
+
+app.post('/login', loginUser);
 
 connectDB().then(() => {
     app.listen(port, () => {
